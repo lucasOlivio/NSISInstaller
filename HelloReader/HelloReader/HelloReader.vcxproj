@@ -139,11 +139,6 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <!-- CUSTOM MSBUILD PROJECT 4 -->
-  <ItemGroup>
-    <NSIFiles Include="*.nsi" />
-    <ExecFiles Include="$(SolutionDir)\$(Platform)\$(Configuration)\*.exe" />
-    <TXTFiles Include="*.txt" />
-  </ItemGroup>
   <PropertyGroup>
     <DeploymentPath>..\bin\</DeploymentPath>
     <DeployZip>..\project4.zip</DeployZip>
@@ -154,6 +149,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>hello</TargetName>
   </PropertyGroup>
+  <ItemGroup>
+    <NSIFiles Include="*.nsi" />
+    <ExecFiles Include="..\x64\$(Configuration)\hello.exe" />
+    <TXTFiles Include="*.txt" />
+  </ItemGroup>
   <Target Name="AfterBuild">
     <RemoveDir Directories="$(DeploymentPath)" Condition="Exists('$(DeploymentPath)')" />
     <Delete Files="$(DeployZip)"  Condition="Exists('$(DeployZip)')" />
